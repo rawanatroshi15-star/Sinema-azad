@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ku" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>سینەما یا ئازاد</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@300;400;600;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/hls.js/1.5.13/hls.min.js"></script>
+<style>
+:root{--bg:#15122b;--surface:#201b3f;--line:#352e63;--text:#f3effc;--muted:#a9a2cc;--accent:#ffb43b;--accent-ink:#2a1a00;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f6f3ff;--surface:#fff;--line:#d9d2f2;--text:#1d1840;--muted:#5d5788;--accent:#b45f00;--accent-ink:#fff}}
+:root[data-theme="light"]{--bg:#f6f3ff;--surface:#fff;--line:#d9d2f2;--text:#1d1840;--muted:#5d5788;--accent:#b45f00;--accent-ink:#fff}
+:root[data-theme="dark"]{--bg:#15122b;--surface:#201b3f;--line:#352e63;--text:#f3effc;--muted:#a9a2cc;--accent:#ffb43b;--accent-ink:#2a1a00}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:"Noto Sans Arabic",Tahoma,"Segoe UI",sans-serif;line-height:1.8}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+a{color:inherit}
+header{display:flex;gap:16px;align-items:center;flex-wrap:wrap;padding:14px 5vw;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}
+.logo{font-weight:700;font-size:1.25rem;margin-inline-end:auto}.logo span{color:var(--accent)}
+#q{flex:1 1 220px;max-width:340px;background:var(--surface);border:1px solid var(--line);color:var(--text);padding:9px 14px;border-radius:999px;font:inherit}
+#q:focus,button:focus-visible,a:focus-visible,select:focus-visible,.card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.hero{margin:20px 5vw 8px;border-radius:20px;padding:clamp(24px,5vw,56px);min-height:320px;display:flex;flex-direction:column;justify-content:flex-end;position:relative;overflow:hidden;background:linear-gradient(200deg,var(--h1),var(--h2))}
+.hero::after{content:attr(data-en);position:absolute;inset-inline-start:-2%;top:6%;font:700 clamp(3rem,14vw,10rem)/1 sans-serif;opacity:.12;direction:ltr;white-space:nowrap;color:#fff;pointer-events:none}
+.hero>*{position:relative;z-index:1;color:#fff}
+.hero h1{margin:0 0 6px;font-size:clamp(2rem,6vw,3.4rem);line-height:1.3}
+.hero p{max-width:56ch;margin:0 0 18px;opacity:.92}
+.meta{font-size:.9rem;opacity:.85;margin-bottom:8px}
+.btn{display:inline-block;background:var(--accent);color:var(--accent-ink);border:0;padding:9px 24px;border-radius:999px;font:600 1rem "Noto Sans Arabic",sans-serif;cursor:pointer;text-decoration:none}
+.btn.ghost{background:rgba(255,255,255,.18);color:#fff;margin-inline-start:8px}
+.btn.alt{background:var(--line);color:var(--text)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;padding:14px 5vw 0}
+.chip{background:var(--surface);color:var(--text);border:1px solid var(--line);padding:5px 16px;border-radius:999px;font:inherit;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+section{padding:18px 5vw 0}
+h2{font-size:1.2rem;margin:10px 0 12px}
+.row{display:flex;gap:14px;overflow-x:auto;padding-bottom:12px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:14px}
+.card{flex:0 0 150px;cursor:pointer;background:none;border:0;padding:0;color:inherit;font:inherit;text-align:start}
+.grid .card{flex:auto}
+.poster{aspect-ratio:2/3;border-radius:12px;padding:12px;display:flex;flex-direction:column;justify-content:flex-end;background:linear-gradient(190deg,var(--h1),var(--h2));color:#fff;font-weight:700;line-height:1.4;border:1px solid var(--line);transition:transform .15s}
+.card:hover .poster{transform:translateY(-4px)}
+.poster{position:relative;overflow:hidden}.poster svg{position:absolute;inset:0;width:100%;height:100%}.poster::after{content:"";position:absolute;inset:50% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.7))}.poster .tx{position:relative;z-index:1;text-shadow:0 1px 6px rgba(0,0,0,.7)}.poster small{display:block}.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}.hero>.hart{position:absolute;inset:0;width:100%;height:100%;opacity:.4;z-index:0}.poster small{font-weight:300;opacity:.85;direction:ltr;text-align:start;font-size:.75rem;font-family:sans-serif}
+.card .t{margin-top:6px;font-size:.92rem}.card .y{color:var(--muted);font-size:.8rem}
+.empty{color:var(--muted);padding:30px 0}
+.note{margin:28px 5vw;padding:18px 20px;border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--muted);font-size:.92rem}
+.note b{color:var(--text)}
+footer{padding:10px 5vw 40px;color:var(--muted);font-size:.85rem}
+.ov{position:fixed;inset:0;background:rgba(8,6,20,.78);display:none;align-items:center;justify-content:center;padding:16px;z-index:20}
+.ov.open{display:flex}
+.dlg{background:var(--surface);border:1px solid var(--line);border-radius:18px;max-width:640px;width:100%;max-height:92vh;overflow:auto;display:grid;grid-template-columns:200px 1fr}
+.dlg .poster{border-radius:0 18px 18px 0;height:100%;aspect-ratio:auto;min-height:300px;border:0}
+.dlg .body{padding:22px}.dlg h3{margin:0 0 4px;font-size:1.5rem}
+.tags{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tags span{border:1px solid var(--line);border-radius:999px;padding:0 12px;font-size:.82rem;color:var(--muted)}
+.pl{background:var(--surface);border:1px solid var(--line);border-radius:18px;max-width:900px;width:100%;max-height:94vh;overflow:auto;padding:16px}
+.pl h3{margin:0 0 10px}
+video{width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;display:block}
+.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;margin-top:12px;font-size:.9rem}
+.tools label{display:block;color:var(--muted);margin-bottom:2px}
+.tools input,.tools select{width:100%;background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:10px;padding:7px 10px;font:inherit}
+.tools input[type=file]{padding:5px}
+#msg{margin:10px 0 0;color:var(--muted);font-size:.9rem}
+@media (max-width:560px){.dlg{grid-template-columns:1fr}.dlg .poster{border-radius:18px 18px 0 0;min-height:200px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">سینەما <span>یا ئازاد</span></div>
+  <input id="q" type="search" placeholder="ل فیلمەکێ بگەڕە…" aria-label="گەڕان">
+</header>
+<div id="hero"></div>
+<div class="chips" id="chips"></div>
+<main id="main"></main>
+
+<div class="note"><b>هەر تشتەکێ ل ڤێرێ یێ یاسایی و بێ پارەیە.</b> فیلمێن کلاسیکێن بێدەنگ ماف و مۆڵەتێن وان بدوماهیک هاتینە و بوینە موڵکێ گشتی، و کارێن Blender و زنجیرا Pioneer One ژ لایێ چێکەرێن خۆ ڤە ب مۆڵەتا Creative Commons هاتینە بەلافکرن. بارێ موڵکێ گشتی ژ وەلاتەکی بۆ یێ دی دگوهورێت، ڤێجا بەری بەلافکرنا دووبارە پشتراست بە.</div>
+<footer>ئەڤ وەشانە ب دەست هاتیە نڤیسین. بۆ فرەکرنا بابەتان، فیلمێن نوی بۆ لیستا F ل ناڤ فایلی زێدە بکە.</footer>
+
+<div class="ov" id="modal" role="dialog" aria-modal="true"><div class="dlg" id="dlg"></div></div>
+<div class="ov" id="pm" role="dialog" aria-modal="true"><div class="pl">
+  <h3 id="ptitle"></h3>
+  <video id="v" controls playsinline></video>
+  <p id="msg"></p>
+  <div class="tools">
+    <div><label for="url">لینکێ ڤیدیۆیێ (MP4 یان HLS)</label><input id="url" dir="ltr" placeholder="https://…/movie.mp4 یان .m3u8"><button class="btn alt" id="goUrl" style="margin-top:6px">لێدان</button></div>
+    <div><label for="vf">یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە</label><input id="vf" type="file" accept="video/*"></div>
+    <div><label for="sf">ژێرنڤیس (VTT یان SRT)</label><input id="sf" type="file" accept=".vtt,.srt"></div>
+    <div><label for="ql">کوالیتی</label><select id="ql"><option value="-1">خۆکار</option></select></div>
+  </div>
+  <p style="margin:14px 0 0"><a class="btn alt" id="arch" target="_blank" rel="noopener">لاپەڕا سەرچاوێ</a> <button class="btn alt" id="pc">دابخە</button></p>
+</div></div>
+
+<script>
+var F=[
+{id:1,t:"نۆسفەراتۆ",en:"Nosferatu",y:1922,type:"فیلم",g:["ترسناک","کلاسیک"],row:"ترس و خەیالێ زانستی",by:"ف. و. مورناو",d:"فیلمەکێ ئەلمانی یێ بێدەنگ ل سەر کونتێ ئۆرلۆک یێ خوین مژ، کو دکەڤیتە دویڤ زەلامەکی و ژنا وی. ئەڤ فیلمە تا نها کارتێکرنێ ل سەر فیلمێن ترسێ دکەت.",c:["#3a1c4a","#0e0a1f"],q:"Nosferatu 1922"},
+{id:2,t:"مێترۆپۆلیس",en:"Metropolis",y:1927,type:"فیلم",g:["خەیالێ زانستی","کلاسیک"],row:"ترس و خەیالێ زانستی",by:"فریتز لانگ",d:"باژارەکێ یێ ئاینده، دەولەمەند ل سەر عەردی دژین و کرێکار ل ژێر عەردی. گەنجەکێ هەول ددەت ئەڤ ئاستەنگیێ ژ ناڤبەرێ ببەت.",c:["#14506b","#0b1530"],q:"Metropolis 1927"},
+{id:3,t:"گەشتەک بۆ هەیڤێ",en:"A Trip to the Moon",y:1902,type:"فیلم",g:["خەیالێ زانستی","کلاسیک"],row:"ترس و خەیالێ زانستی",by:"جۆرج مێلییەس",d:"زانایێن ئەستێرەناسیێ ب کاپسولەکێ دچنە هەیڤێ و ب خەلکێ وێرێ ڤە دکەڤنە شەڕ. فیلمەکێ کورت و سەرسوڕهێنەر.",c:["#2b3a8c","#0f1236"],q:"A Trip to the Moon 1902 Melies"},
+{id:4,t:"کابینەتا دکتۆر کالیگاری",en:"The Cabinet of Dr. Caligari",y:1920,type:"فیلم",g:["ترسناک","کلاسیک"],row:"ترس و خەیالێ زانستی",by:"ڕۆبەرت ڤینە",d:"کەسەکێ خەونکەر زەلامەکێ نڤستی د بازارێ دا نیشان ددەت و کوشتنێن نهێنی دەست پێدکەن. دیکۆرێن وێ یێن شێواندی ناسنامەیا فیلمێ بوینە.",c:["#5a3a14","#161008"],q:"Cabinet of Dr. Caligari 1920"},
+{id:5,t:"شەڤا مریێن زیندی",en:"Night of the Living Dead",y:1968,type:"فیلم",g:["ترسناک"],row:"ترس و خەیالێ زانستی",by:"جۆرج ڕۆمێرۆ",d:"چەند نەناس خۆ د مالەکا گوندی دا دگرن د دەمێ هێرشا مریان دا. ئەڤ فیلمە شێوێ فیلمێن زۆمبی یێن نوی دیار کر.",c:["#3d3d3d","#0a0a0a"],q:"Night of the Living Dead 1968"},
+{id:6,t:"جەنەڕاڵ",en:"The General",y:1926,type:"فیلم",g:["کۆمیدی","کلاسیک"],row:"کۆمیدیا و کلاسیکێن بێدەنگ",by:"باستەر کیتۆن",d:"شوفێرێ ترێنێ د شەڕێ ناڤخۆیی یێ ئەمریکا دا دکەڤیتە دویڤ ترێنا خۆ یا دزی. کۆمیدیایەکا پڕ جوڵە.",c:["#7a4a1a","#241407"],q:"The General 1926 Buster Keaton"},
+{id:7,t:"کوڕۆک",en:"The Kid",y:1921,type:"فیلم",g:["کۆمیدی","کلاسیک"],row:"کۆمیدیا و کلاسیکێن بێدەنگ",by:"چارلی چاپلن",d:"زەلامەکێ بێ مال زارۆکەکێ فەرامۆشکری وەردگریت و ل کۆلانان مەزن دکەت. تێکەلاڤەکا پێکەنینێ و دلتەنگیێ.",c:["#6b2f3a","#1c0c12"],q:"The Kid 1921 Chaplin"},
+{id:8,t:"ئاسمانا ئەمنی",en:"Safety Last!",y:1923,type:"فیلم",g:["کۆمیدی","کلاسیک"],row:"کۆمیدیا و کلاسیکێن بێدەنگ",by:"فرێد نیومەیەر و سام تەیلەر",d:"گەنجەکێ ژ باژارۆکەکێ بچووک دچیتە باژارێ مەزن، و بۆ سەرکەفتنێ ل سەر ئاڤاهیەکێ بلند هەلدکشیت. هارۆڵد لۆید تێدا یێ ئەکتەرە.",c:["#4a6b2f","#121c0b"],q:"Safety Last 1923 Harold Lloyd"},
+{id:9,t:"کەشتیا پۆتێمکین",en:"Battleship Potemkin",y:1925,type:"فیلم",g:["دراما","کلاسیک"],row:"کۆمیدیا و کلاسیکێن بێدەنگ",by:"سێرگەی ئایزەنشتاین",d:"ملەوانێن کەشتیەکا جەنگی یا ڕووسی ل دژی ئەفسەرێن خۆ ڕادپەڕن. یەک ژ فیلمێن بەرچاڤ د مێژوویا سینەمایێ دا.",c:["#3c4a5a","#0d1219"],q:"Battleship Potemkin 1925"},
+{id:10,t:"ستیمبۆت ویلی",en:"Steamboat Willie",y:1928,type:"فیلم",g:["کارتۆن","کۆمیدی","کلاسیک"],row:"کۆمیدیا و کلاسیکێن بێدەنگ",by:"والت دیزنی و ئوب ئایوەرکس",d:"میکی ماوس ل سەر کەشتیەکا ڕووباری د فیلمەکێ کورت یێ شاد دا. دەستپێکا ساڵا 2024 ل ئەمریکا بوویە موڵکێ گشتی.",c:["#1f5c5c","#0a1f1f"],q:"Steamboat Willie 1928"},
+{id:11,t:"ئەرنەبا مەزن",en:"Big Buck Bunny",y:2008,type:"فیلم",g:["کارتۆن","کۆمیدی"],row:"کارتۆنێن ئازاد",by:"بنیاتا Blender",d:"ئەرنەبەکێ مەزن و دلنەرم بریار ددەت تۆلێ ژ سێ جۆندێن ئازاردەر بکەت. ب مۆڵەتا Creative Commons و ب بەرنامەیێ Blender یێ بێ پارە هاتیە چێکرن.",c:["#2e7d32","#0d2a10"],q:"Big Buck Bunny"},
+{id:12,t:"سینتەل",en:"Sintel",y:2010,type:"فیلم",g:["کارتۆن"],row:"کارتۆنێن ئازاد",by:"بنیاتا Blender",d:"کچەکێ ل دویڤ ئەژدیهایەکێ بچووک دگەڕیت یێ کو هەڤال لێ بوویە و ژ دەست دایە. ب مۆڵەتا Creative Commons هاتیە بەلافکرن.",c:["#8c3a2b","#2a0f0b"],q:"Sintel Blender"},
+{id:13,t:"فرمێسکێن پۆلایێ",en:"Tears of Steel",y:2012,type:"فیلم",g:["خەیالێ زانستی","کارتۆن"],row:"کارتۆنێن ئازاد",by:"بنیاتا Blender",d:"گروپەکێ زانا و شەڕڤان ل ئامستەردامێ هەول ددەن جیهانێ ژ ڕۆبۆتان ڕزگار بکەن. ب مۆڵەتا Creative Commons.",c:["#1f4f7a","#08121f"],q:"Tears of Steel Blender"},
+{id:14,t:"خەونا فیلان",en:"Elephants Dream",y:2006,type:"فیلم",g:["کارتۆن","خەیالێ زانستی"],row:"کارتۆنێن ئازاد",by:"بنیاتا Blender",d:"دوو کەسێن جودا دچنە د ناڤ ماشینەکا مەزن و نەناس دا. یەکەمین فیلمێ ئاشکەرا یێ Blender.",c:["#6b4a8c","#1a0f24"],q:"Elephants Dream Blender"},
+{id:15,t:"سیتا یا ب بلوز دچریت",en:"Sita Sings the Blues",y:2008,type:"فیلم",g:["کارتۆن","دراما"],row:"کارتۆنێن ئازاد",by:"نینا پەیلی",d:"چیرۆکا ڕامایانا ژ ڕوانگەهێ سیتایێ ڤە، ب ئەنیمەیشنەکا تایبەت و ئاوازێن کۆنێن ئەمریکی. ب مۆڵەتا ئازاد ژ لایێ چێکەری ڤە هاتیە بەلافکرن.",c:["#a8422b","#2b0f12"],q:"Sita Sings the Blues"},
+{id:16,t:"پایۆنیر وەن",en:"Pioneer One",y:2010,type:"زنجیرە",g:["زنجیرە","خەیالێ زانستی","دراما"],row:"زنجیرە",by:"جۆش بێرنهارد و بێرنی سو",d:"زنجیرەیەکا خەیالێ زانستی یا سەربەخۆ، ب یارمەتیا بەخشینێن بینەران هاتیە چێکرن و ب مۆڵەتا Creative Commons هاتیە بەلافکرن.",c:["#2b5a6b","#0b1a22"],q:"Pioneer One"},
+{id:17,t:"کامیناندێس 2: گران دیلاما",en:"Caminandes 2: Gran Dillama",y:2013,type:"فیلم",g:["کارتۆن","کۆمیدی"],row:"",by:"پابلو ڤازکێز",d:"لامایەکا بچووک ب ناڤێ کۆرۆ دبینیت کو گیا ل لایێ دی یێ دیواری ب ڕەنگترە، و هەول ددەت بگەهیتە وێ.",c:["#2f6f8f","#0b1d2a"],q:"Caminandes Gran Dillama",pt:"x3QKwgFXGZQ7yvCTD2wHJA"},
+{id:18,t:"کۆسموس لاوندرۆمات",en:"Cosmos Laundromat",y:2015,type:"فیلم",g:["کارتۆن","دراما"],row:"",by:"ماتیو ئۆڤرەی",d:"پەزەکێ دلتەنگ ل دورگەکا بەتال فرۆشیارەکێ سەیر دبینیت، یێ کو دیاریەکا ژیانێ پێشکێشی دکەت.",c:["#c4572f","#2b0d12"],q:"Cosmos Laundromat",pt:"wfW3bDTkUhQKRnEfT9Wpeq"},
+{id:19,t:"نیڤا پەرداخێ",en:"Glass Half",y:2015,type:"فیلم",g:["کارتۆن","کۆمیدی"],row:"",by:"بێئۆرن لێئۆنارد",d:"دوو ڕەخنەگرێن هونەری یێن ئەماتۆر ل گالەرییەکێ ب گەرمی گەنگەشێ دکەن، هەتا تابلۆیەکێ دبینن کو هەردوو ل سەر ڕێک دکەڤن.",c:["#6b4f8f","#1a1230"],q:"Glass Half Blender",pt:"dnayqfMS4PAE9pSZ3kyVUb"},
+{id:20,t:"قارەمان",en:"Hero",y:2018,type:"فیلم",g:["کارتۆن"],row:"",by:"بنیاتا Blender",d:"فیلمەکێ کورت یێ ب تەکنیکا 2D د ناڤ بەرنامەیێ سێ ڕەهەندی دا، بۆ نیشاندانا توانایێن Grease Pencil یێ Blender.",c:["#8f2f4f","#240a14"],q:"Hero Blender Grease Pencil",pt:"8KerEHuf8qyGtCVoAoEdzQ"},
+{id:21,t:"بەهار",en:"Spring",y:2019,type:"فیلم",g:["کارتۆن","دراما"],row:"",by:"ئەندی گۆراڵچیک",d:"کچەکا شوان و سەگێ وێ ل ڕۆحێن کەڤن ڕادوەستن دا کو ڕێزا ژیانێ بەردەوام بیت. فیلمەکێ بێ گفتوگۆ.",c:["#3a8f5a","#0c2418"],q:"Spring Blender Open Movie",pt:"8B5QmoLSS3mWJ4fmZZu3Ye"},
+{id:22,t:"ڕاکرنا قاوێ",en:"Coffee Run",y:2020,type:"فیلم",g:["کارتۆن","دراما"],row:"",by:"هیالتی هیالمارسۆن",d:"کچەکا ب هێزا کافیینێ ل ناڤ بیرەوەریێن تاڵ و شیرین یێن پەیوەندیەکا خۆ یا بەری دهێ دڕەڤیت.",c:["#c47a2f","#2a1507"],q:"Coffee Run Blender",pt:"xymLD6rkpHNug3fzzMyhmZ"},
+{id:23,t:"ترسا سپرایتان",en:"Sprite Fright",y:2021,type:"فیلم",g:["کارتۆن","ترسناک","کۆمیدی"],row:"",by:"هیالتی هیالمارسۆن و ماتیو لوهن",d:"گروپەکێ لاوێن ژاوەژاوکەر دچنە د دارستانەکا دوور دا و بۆکێن ئارام دبینن، یێن کو ب ڕاستی هێزەکا نەخواستی دردکەون.",c:["#5a2f8f","#150a24"],q:"Sprite Fright Blender",pt:"mziZQzmf95pGMSqk7BPZvi"},
+{id:24,t:"شەحن",en:"Charge",y:2022,type:"فیلم",g:["کارتۆن","خەیالێ زانستی"],row:"",by:"بنیاتا Blender",d:"ل جیهانەکا کێمئاوایا وزێ، پیرەمێرەکێ هەژار دچیتە د کارگەها باتەریان دا و ب ڕۆبۆتەکێ پاراستنێ ڤە دکەڤیتە ڕووبەڕووبوونەکا مەترسیدار.",c:["#8f6a1f","#1d1405"],q:"Charge Blender",pt:"1AKMruUNPJQQQ4bvtHYVZQ"},
+{id:25,t:"فڕینا ب دەست",en:"Wing It!",y:2023,type:"فیلم",g:["کارتۆن","کۆمیدی","خەیالێ زانستی"],row:"",by:"بنیاتا Blender",d:"ئەندازیارەکێ ڕەق ژ سەردانا فڕۆکەڤانەکێ دلگەرم نەخۆشە، و هەردوو د شاتلێکا ژ کۆنترۆل دەرکەفتی دا بەرز دبن.",c:["#2f8f8a","#08201f"],q:"Wing It Blender",pt:"pkDDcE7HiLU3UTGmRV1nJG"},
+{id:26,t:"سینگۆلاریتی",en:"Singularity",y:2026,type:"فیلم",g:["کارتۆن","خەیالێ زانستی"],row:"",by:"بنیاتا Blender",d:"ڕوودانەکا ئاسمانی یا ترسناک مالا بەفرین یا گیانەوەرەکێ بچووک دقووت، و ئەو ل ناڤ بوونەوەرێن ڕووناک دا پەنا دبەت.",c:["#2f3f8f","#080b24"],q:"Singularity Blender",pt:"4pSeQCu9XXz9wWMh5gTNMf"}
+];
+var ART={
+1:'<circle cx="72" cy="34" r="18" fill="#e9e2c8" opacity=".9"/><path d="M0 150v-30l12-16 8 10 10-26 10 26 8-10 12 16v30z" fill="#0a0612"/><path d="M42 150l4-56-9-12 11 6 3-18 3 18 11-6-9 12 4 56z" fill="#05030a"/>',
+2:'<g fill="#0a1a33" opacity=".92"><rect x="4" y="62" width="14" height="88"/><rect x="21" y="34" width="12" height="116"/><rect x="37" y="72" width="16" height="78"/><rect x="57" y="22" width="12" height="128"/><rect x="73" y="56" width="20" height="94"/></g><circle cx="50" cy="38" r="15" fill="none" stroke="#ffb43b" stroke-width="4" stroke-dasharray="5 3"/><circle cx="50" cy="38" r="5" fill="#ffb43b"/>',
+3:'<circle cx="50" cy="58" r="30" fill="#f3e9b8"/><circle cx="39" cy="50" r="3.5" fill="#8a7f4a"/><circle cx="61" cy="50" r="3.5" fill="#8a7f4a"/><path d="M32 70q18 14 36 0" stroke="#8a7f4a" fill="none" stroke-width="2.5"/><path d="M84 12l7 7-24 30-7-7z" fill="#d9534f"/>',
+4:'<path d="M0 150V84l18 10 6-46 14 38 10-54 14 58 12-30 26 26v64z" fill="#1a0f05"/><path d="M22 66l20 7M78 66l-20 7" stroke="#ffd27a" stroke-width="3.5"/><circle cx="50" cy="40" r="5" fill="#ffd27a"/>',
+5:'<circle cx="76" cy="30" r="12" fill="#ddd"/><path d="M16 150v-40l22-20 22 20v40z" fill="#0b0b0b"/><rect x="34" y="118" width="8" height="12" fill="#ffd27a"/><path d="M82 150v-56M82 120l-12-14M82 108l10-12" stroke="#000" stroke-width="3" fill="none"/>',
+6:'<g fill="#111"><rect x="14" y="84" width="52" height="26"/><rect x="54" y="66" width="22" height="28"/><rect x="20" y="68" width="8" height="16"/></g><circle cx="28" cy="116" r="9" fill="#111" stroke="#e8c38a" stroke-width="2"/><circle cx="54" cy="116" r="9" fill="#111" stroke="#e8c38a" stroke-width="2"/><path d="M0 126h100" stroke="#e8c38a" stroke-width="2"/><circle cx="24" cy="56" r="6" fill="#fff" opacity=".5"/><circle cx="32" cy="42" r="8" fill="#fff" opacity=".35"/>',
+7:'<path d="M30 70q20-32 40 0z" fill="#111"/><rect x="23" y="68" width="54" height="5" rx="2" fill="#111"/><path d="M72 84v46q0 8 8 8" stroke="#111" stroke-width="3.5" fill="none"/><path d="M38 96q12 8 24 0" stroke="#111" stroke-width="4" fill="none" stroke-linecap="round"/>',
+8:'<rect x="36" y="14" width="28" height="136" fill="#10180a"/><circle cx="50" cy="44" r="16" fill="#f1ecd2"/><path d="M50 44V33M50 44l8 5" stroke="#111" stroke-width="2.5"/><circle cx="50" cy="74" r="4" fill="#111"/><path d="M50 78v14M50 82l-8-14M50 82l8-14M50 92l-5 10M50 92l5 10" stroke="#111" stroke-width="2.5" fill="none"/>',
+9:'<path d="M10 100h80l-10 14H20z" fill="#0b0f14"/><g fill="#0b0f14"><rect x="38" y="80" width="16" height="20"/><rect x="46" y="60" width="3" height="22"/><rect x="62" y="86" width="5" height="14"/></g><path d="M49 60h14l-4 5 4 5H49z" fill="#d33"/><path d="M0 118q10-6 20 0t20 0 20 0 20 0 20 0v32H0z" fill="#16202b"/>',
+10:'<path d="M14 98h72l-8 16H22z" fill="#111"/><g fill="#111"><rect x="30" y="80" width="34" height="18"/><rect x="34" y="60" width="8" height="22"/><rect x="50" y="66" width="8" height="16"/></g><circle cx="38" cy="50" r="6" fill="#fff" opacity=".55"/><circle cx="46" cy="38" r="8" fill="#fff" opacity=".4"/><path d="M0 118q10-6 20 0t20 0 20 0 20 0 20 0v32H0z" fill="#0e3a3a"/>',
+11:'<ellipse cx="38" cy="40" rx="8" ry="26" fill="#e9d9c0"/><ellipse cx="62" cy="40" rx="8" ry="26" fill="#e9d9c0"/><circle cx="50" cy="84" r="28" fill="#e9d9c0"/><circle cx="41" cy="78" r="3" fill="#222"/><circle cx="59" cy="78" r="3" fill="#222"/><ellipse cx="50" cy="88" rx="4" ry="3" fill="#e08a8a"/><rect x="46" y="92" width="8" height="10" fill="#fff"/>',
+12:'<path d="M0 150l30-62 20 30 25-52 25 84z" fill="#fff" opacity=".85"/><path d="M60 40q14-16 30-6-9 4-9 14-7-7-13-3z" fill="#f4a261"/><circle cx="22" cy="34" r="3" fill="#fff" opacity=".8"/>',
+13:'<rect x="28" y="38" width="44" height="50" rx="7" fill="#0d1b2a" stroke="#6fb7ff" stroke-width="2.5"/><circle cx="50" cy="62" r="9" fill="#6fe0ff"/><rect x="42" y="90" width="16" height="12" fill="#0d1b2a"/><path d="M0 150v-26h12v-10h10v10h10v-18h12v18h14v-12h12v12h10v-8h20v34z" fill="#08121f"/>',
+14:'<circle cx="50" cy="60" r="32" fill="none" stroke="#e7c8ff" stroke-width="3"/><circle cx="50" cy="60" r="20" fill="none" stroke="#e7c8ff" stroke-width="3" stroke-dasharray="6 4"/><path d="M50 28v64M18 60h64" stroke="#e7c8ff" stroke-width="2"/><path d="M10 150q20-30 40-20t40-30" stroke="#e7c8ff" stroke-width="3" fill="none"/>',
+15:'<g fill="#ffd9a0" opacity=".92" transform="translate(50 62)"><ellipse cy="-20" rx="9" ry="20"/><ellipse cy="-20" rx="9" ry="20" transform="rotate(60)"/><ellipse cy="-20" rx="9" ry="20" transform="rotate(120)"/><ellipse cy="-20" rx="9" ry="20" transform="rotate(180)"/><ellipse cy="-20" rx="9" ry="20" transform="rotate(240)"/><ellipse cy="-20" rx="9" ry="20" transform="rotate(300)"/></g><circle cx="50" cy="62" r="8" fill="#a8422b"/>',
+16:'<circle cx="50" cy="76" r="16" fill="none" stroke="#9fe3ff" stroke-width="2"/><circle cx="50" cy="76" r="30" fill="none" stroke="#9fe3ff" stroke-width="2" opacity=".7"/><circle cx="50" cy="76" r="44" fill="none" stroke="#9fe3ff" stroke-width="2" opacity=".4"/><path d="M50 52l12 32H38z" fill="#d8e4ea"/><path d="M0 128q25-10 50 0t50-4v26H0z" fill="#0b1a22"/>'
+};
+function art(f,cls){var o=ART[f.id]?'<svg'+(cls?' class="'+cls+'"':'')+' viewBox="0 0 100 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+ART[f.id]+'</svg>':'';if(f.img&&!cls)o+='<img src="'+f.img+'" alt="" loading="lazy" onerror="this.remove()">';return o}
+var BASE="https://video.blender.org/object-storage/web_videos/",TH="https://video.blender.org/lazy-static/thumbnails/",NEW="ژ 2010 ڤە";
+var MEDIA={
+11:["bf1f3fb5-b119-4f9f-9930-8e20e892b898",[[480,"bf1f3fb5-b119-4f9f-9930-8e20e892b898-480"],[720,"bf1f3fb5-b119-4f9f-9930-8e20e892b898-720"]]],
+12:["0eb052d0-fd51-43e6-aa33-ecdbf77a5d40",[[480,"0eb052d0-fd51-43e6-aa33-ecdbf77a5d40-480"],[720,"0eb052d0-fd51-43e6-aa33-ecdbf77a5d40-720"]]],
+13:["8533ea43-4271-4a57-9694-e9d0b35e1aa1",[[480,"8533ea43-4271-4a57-9694-e9d0b35e1aa1-480"],[720,"8533ea43-4271-4a57-9694-e9d0b35e1aa1-720"]]],
+14:["cccc3e60-0291-4ecc-aa56-39b2e2c7d0d5",[[480,"cccc3e60-0291-4ecc-aa56-39b2e2c7d0d5-480"],[720,"cccc3e60-0291-4ecc-aa56-39b2e2c7d0d5-720"]]],
+17:["fb70d459-48d2-4db5-adba-813c84f9200a",[[480,"fb70d459-48d2-4db5-adba-813c84f9200a-480"],[720,"fb70d459-48d2-4db5-adba-813c84f9200a-720"],[1080,"fb70d459-48d2-4db5-adba-813c84f9200a-1080"]]],
+18:["f507dfdc-e73e-45a4-9778-d758cbe1ce96",[[480,"f507dfdc-e73e-45a4-9778-d758cbe1ce96-480"],[720,"f507dfdc-e73e-45a4-9778-d758cbe1ce96-720"]]],
+19:["64222c8a-c4c7-4b3b-9850-7fb2078edcf6",[[480,"64222c8a-c4c7-4b3b-9850-7fb2078edcf6-480"],[720,"64222c8a-c4c7-4b3b-9850-7fb2078edcf6-720"],[1080,"64222c8a-c4c7-4b3b-9850-7fb2078edcf6-1080"]]],
+20:["b2806123-13f5-43c7-a5da-6b263db351d3",[[536,"6c79205c-bd3a-42b5-a8a2-ce7a2a166154-536"]]],
+21:["3d95fb3d-c866-42c8-9db1-fe82f48ccb95",[[480,"3d95fb3d-c866-42c8-9db1-fe82f48ccb95-480"],[720,"3d95fb3d-c866-42c8-9db1-fe82f48ccb95-720"],[804,"3d95fb3d-c866-42c8-9db1-fe82f48ccb95-804"]]],
+22:["ff8fe61b-026f-4f07-b66b-2a790d6f6ab1",[[480,"ff8fe61b-026f-4f07-b66b-2a790d6f6ab1-480"],[720,"ff8fe61b-026f-4f07-b66b-2a790d6f6ab1-720"],[804,"ff8fe61b-026f-4f07-b66b-2a790d6f6ab1-804"]]],
+23:["ff105d09-ca07-4128-b5f7-6e25351bb899",[[720,"a69d68a5-a0e0-4a80-9d66-49f093c97aaf-720"],[804,"a69d68a5-a0e0-4a80-9d66-49f093c97aaf-804"]]],
+24:["ffd458f8-adaf-4d95-8e09-8cbef33fd9b4",[[720,"70528f27-fd51-479f-8146-abb5a7a81fff-720"],[1080,"01d4421b-55f7-4349-bb6c-b8aa3053ffe4-1080"]]],
+25:["d817984e-6b27-46b9-9222-3952afd3e28c",[[480,"1be4c93c-1fd2-498d-adc7-50126823033e-480"],[1080,"9178581e-4d24-4a67-adf2-a30eadfaf32f-1080"]]],
+26:["54d3fc9c-96ba-4108-bb2f-ba27f5c71ae9",[[1080,"f91fd74e-a81f-48ec-b92b-c9504ac46e31-1080"]]]};
+var PT={11:"pAQiVCgv2CsLg79KKXUoMw",12:"2PcJe5aZqozRvH7MJ8BTmC",13:"hs1zJY8mdr3iH2JNmxpeGV",14:"rhMeBiBURa2KgsAfkC6kda"};
+F.forEach(function(f){var m=MEDIA[f.id];if(m){f.img=TH+m[0]+".jpg";f.srcs=m[1].map(function(x){return [x[0],BASE+x[1]+".mp4"]})}if(PT[f.id])f.pt=PT[f.id];if(f.srcs&&f.y>=2010&&f.type==="فیلم")f.row=NEW});
+var cats=["هەمی",NEW,"زنجیرە","کلاسیک","ترسناک","خەیالێ زانستی","کۆمیدی","کارتۆن"];
+var cur="هەمی",term="",cf=null,hls=null,subUrl=null,cs=null;
+var $=function(i){return document.getElementById(i)};
+function link(f){return f.pt?"https://video.blender.org/w/"+f.pt:"https://archive.org/search?query="+encodeURIComponent(f.q)}
+function card(f){return '<button class="card" data-id="'+f.id+'"><div class="poster" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f)+'<span class="tx">'+f.t+'<small>'+f.en+'</small></span></div><div class="t">'+f.t+'</div><div class="y">'+f.y+' – '+f.type+'</div></button>'}
+function hero(){var f=F[1];$("hero").innerHTML='<div class="hero" data-en="'+f.en+'" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f,"hart")+'<div class="meta">'+f.y+' – '+f.g.join("، ")+'</div><h1>'+f.t+'</h1><p>'+f.d+'</p><div><button class="btn" data-play="'+f.id+'">تەماشە بکە</button><button class="btn ghost" data-id="'+f.id+'">وردەکاری</button></div></div>'}
+function chips(){$("chips").innerHTML=cats.map(function(c){return '<button class="chip" aria-pressed="'+(c===cur)+'" data-c="'+c+'">'+c+'</button>'}).join("")}
+function render(){
+  var list=F.filter(function(f){return (cur==="هەمی"||f.g.indexOf(cur)>-1||(cur===NEW&&f.y>=2010))&&(!term||(f.t+f.en).toLowerCase().indexOf(term)>-1)});
+  var h="";
+  if(cur==="هەمی"&&!term){
+    var rows=[];F.forEach(function(f){if(rows.indexOf(f.row)<0)rows.push(f.row)});
+    rows.sort(function(a,b){return (a===NEW?0:1)-(b===NEW?0:1)});rows.forEach(function(r){h+='<section><h2>'+r+'</h2><div class="row">'+F.filter(function(f){return f.row===r}).map(card).join("")+'</div></section>'});
+  }else{
+    h='<section><h2>ئەنجام ('+list.length+')</h2>'+(list.length?'<div class="grid">'+list.map(card).join("")+'</div>':'<div class="empty">چ فیلم نەهاتنە دیتن. ناڤەکێ دی تاقی بکە یان «هەمی» هلبژێرە.</div>')+'</section>';
+  }
+  $("main").innerHTML=h;
+}
+function find(id){return F.filter(function(x){return x.id==id})[0]}
+function details(id){
+  var f=find(id);if(!f)return;
+  $("dlg").innerHTML='<div class="poster" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f)+'<span class="tx">'+f.t+'<small>'+f.en+'</small></span></div><div class="body"><h3>'+f.t+'</h3><div style="color:var(--muted)">'+f.y+' – دەرهێنەر: '+f.by+'</div><div class="tags">'+f.g.map(function(g){return '<span>'+g+'</span>'}).join("")+'</div><p>'+f.d+'</p><button class="btn" data-play="'+f.id+'">تەماشە بکە</button> <button class="btn alt" data-close="modal">دابخە</button></div>';
+  $("modal").classList.add("open");
+}
+function stop(){var v=$("v");if(hls){hls.destroy();hls=null}v.pause();v.removeAttribute("src");v.querySelectorAll("track").forEach(function(t){t.remove()});v.load();$("ql").innerHTML='<option value="-1">خۆکار</option>'}
+function load(src){
+  stop();var v=$("v");$("msg").textContent="";
+  if(/\.m3u8(\?|$)/i.test(src)&&window.Hls&&Hls.isSupported()){
+    hls=new Hls();hls.loadSource(src);hls.attachMedia(v);
+    hls.on(Hls.Events.MANIFEST_PARSED,function(_,d){var o='<option value="-1">خۆکار</option>';d.levels.forEach(function(l,i){o+='<option value="'+i+'">'+(l.height?l.height+"p":"#"+(i+1))+'</option>'});$("ql").innerHTML=o});
+    hls.on(Hls.Events.ERROR,function(_,e){if(e.fatal)$("msg").textContent="ڤیدیۆ نەهاتە بارکرن. لینکی پشتراست بکە."});
+  }else{v.src=src}
+  v.play().catch(function(){});
+}
+function play(id){
+  var f=find(id);if(!f)return;cf=f;
+  $("modal").classList.remove("open");
+  $("ptitle").textContent=f.t+" ("+f.y+")";
+  $("arch").href=link(f);$("arch").style.display=f.srcs?"none":"";$("url").value="";cs=f.srcs||null;
+  stop();
+  $("msg").textContent=f.srcs?"ڤیدیۆ ژ پەیجا فەرمی یا Blender دهێتە بارکرن. © Blender Foundation – مۆڵەتا Creative Commons (ناڤێ چێکەری بنڤیسە ئەگەر بەلاڤ بکەی).":"ڤیدیۆیەکا یاسایی دانە: لینکەکێ MP4 یان HLS بنڤێسە، یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە. دشێی ژی ل Internet Archive بگەڕی.";
+  $("pm").classList.add("open");
+  if(cs){var d=cs.filter(function(x){return x[0]===720})[0]||cs[0];$("url").value=d[1];load(d[1]);$("ql").innerHTML=cs.map(function(x,i){return '<option value="'+i+'"'+(x===d?" selected":"")+">"+x[0]+"p</option>"}).join("")}
+}
+function closeP(){stop();$("pm").classList.remove("open")}
+function toVtt(t){return /^WEBVTT/.test(t)?t:"WEBVTT\n\n"+t.replace(/\r/g,"").replace(/(\d\d:\d\d:\d\d),(\d{3})/g,"$1.$2")}
+document.addEventListener("click",function(e){
+  var c=e.target.closest("[data-c]");if(c){cur=c.getAttribute("data-c");chips();render();return}
+  var p=e.target.closest("[data-play]");if(p){play(p.getAttribute("data-play"));return}
+  var d=e.target.closest("[data-id]");if(d){details(d.getAttribute("data-id"));return}
+  var x=e.target.closest("[data-close]");if(x){$(x.getAttribute("data-close")).classList.remove("open");return}
+  if(e.target.id==="modal")$("modal").classList.remove("open");
+  if(e.target.id==="pm"||e.target.id==="pc")closeP();
+});
+document.addEventListener("keydown",function(e){if(e.key==="Escape"){$("modal").classList.remove("open");closeP()}});
+$("q").addEventListener("input",function(e){term=e.target.value.trim().toLowerCase();render()});
+$("goUrl").addEventListener("click",function(){var u=$("url").value.trim();if(u)load(u)});
+$("vf").addEventListener("change",function(e){var f=e.target.files[0];if(f)load(URL.createObjectURL(f))});
+$("ql").addEventListener("change",function(e){
+  if(hls){hls.currentLevel=parseInt(e.target.value,10);return}
+  if(!cs)return;var v=$("v"),t=v.currentTime,i=e.target.selectedIndex,o=e.target.innerHTML;
+  load(cs[i][1]);e.target.innerHTML=o;e.target.selectedIndex=i;
+  v.addEventListener("loadedmetadata",function(){v.currentTime=t},{once:true});
+});
+$("sf").addEventListener("change",function(e){
+  var f=e.target.files[0];if(!f)return;
+  f.text().then(function(t){
+    var v=$("v");v.querySelectorAll("track").forEach(function(x){x.remove()});
+    if(subUrl)URL.revokeObjectURL(subUrl);
+    subUrl=URL.createObjectURL(new Blob([toVtt(t)],{type:"text/vtt"}));
+    var tr=document.createElement("track");tr.kind="subtitles";tr.label="ژێرنڤیس";tr.src=subUrl;tr.default=true;v.appendChild(tr);
+    if(v.textTracks[0])v.textTracks[0].mode="showing";
+  });
+});
+$("v").addEventListener("error",function(){if($("v").getAttribute("src"))$("msg").textContent="ڤیدیۆ نەهاتە بارکرن. لینکی پشتراست بکە یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە."});
+hero();chips();render();
+</script>
+</body>
+</html>
