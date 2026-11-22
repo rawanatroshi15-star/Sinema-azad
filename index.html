@@ -74,8 +74,8 @@ video{width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;display:bl
 <div class="chips" id="chips"></div>
 <main id="main"></main>
 
-<div class="note"><b>هەر تشتەکێ ل ڤێرێ یێ یاسایی و بێ پارەیە.</b> فیلمێن کلاسیکێن بێدەنگ ماف و مۆڵەتێن وان بدوماهیک هاتینە و بوینە موڵکێ گشتی، و کارێن Blender و زنجیرا Pioneer One ژ لایێ چێکەرێن خۆ ڤە ب مۆڵەتا Creative Commons هاتینە بەلافکرن. بارێ موڵکێ گشتی ژ وەلاتەکی بۆ یێ دی دگوهورێت، ڤێجا بەری بەلافکرنا دووبارە پشتراست بە.</div>
-<footer>ئەڤ وەشانە ب دەست هاتیە نڤیسین. بۆ فرەکرنا بابەتان، فیلمێن نوی بۆ لیستا F ل ناڤ فایلی زێدە بکە.</footer>
+<div class="note"><b>هەر تشتەکێ ل ڤێرێ یێ یاسایی و بێ پارەیە.</b> فیلمێن کلاسیکێن بێدەنگ ماف و مۆڵەتێن وان بدوماهیک هاتینە و بوینە موڵکێ گشتی، و کارێن Blender و زنجیرا Pioneer One ژ لایێ چێکەرێن خۆ ڤە ب مۆڵەتا Creative Commons هاتینە بەلافکرن. هەندەک فیلم (وەک شارێد، کچا ڕۆژنامەگەریێ و شەڤا مریێن زیندی) تەنێ ل ئەمریکا موڵکێ گشتین. بارێ موڵکێ گشتی ژ وەلاتەکی بۆ یێ دی دگوهورێت، ڤێجا بەری بەلافکرنا دووبارە پشتراست بە.</div>
+<footer>فیلمێن Blender کورتن (2 هەتا 15 خولەک) چونکی ئەو فیلمێن کورتێن ئازادن. فیلمێن درێژ ژ Internet Archive دهێنە بارکرن.</footer>
 
 <div class="ov" id="modal" role="dialog" aria-modal="true"><div class="dlg" id="dlg"></div></div>
 <div class="ov" id="pm" role="dialog" aria-modal="true"><div class="pl">
@@ -85,7 +85,8 @@ video{width:100%;aspect-ratio:16/9;background:#000;border-radius:12px;display:bl
   <div class="tools">
     <div><label for="url">لینکێ ڤیدیۆیێ (MP4 یان HLS)</label><input id="url" dir="ltr" placeholder="https://…/movie.mp4 یان .m3u8"><button class="btn alt" id="goUrl" style="margin-top:6px">لێدان</button></div>
     <div><label for="vf">یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە</label><input id="vf" type="file" accept="video/*"></div>
-    <div><label for="sf">ژێرنڤیس (VTT یان SRT)</label><input id="sf" type="file" accept=".vtt,.srt"></div>
+    <div><label for="sl">ژێرنڤیس (العربية / English / Kurdî)</label><select id="sl"><option value="">بێ ژێرنڤیس</option></select><small id="sh" dir="ltr" style="color:var(--muted);display:block;margin-top:4px"></small></div>
+    <div><label for="sf">فایلەکێ ژێرنڤیسێ ژ ئامیرێ خۆ (VTT / SRT)</label><input id="sf" type="file" accept=".vtt,.srt"></div>
     <div><label for="ql">کوالیتی</label><select id="ql"><option value="-1">خۆکار</option></select></div>
   </div>
   <p style="margin:14px 0 0"><a class="btn alt" id="arch" target="_blank" rel="noopener">لاپەڕا سەرچاوێ</a> <button class="btn alt" id="pc">دابخە</button></p>
@@ -118,7 +119,14 @@ var F=[
 {id:23,t:"ترسا سپرایتان",en:"Sprite Fright",y:2021,type:"فیلم",g:["کارتۆن","ترسناک","کۆمیدی"],row:"",by:"هیالتی هیالمارسۆن و ماتیو لوهن",d:"گروپەکێ لاوێن ژاوەژاوکەر دچنە د دارستانەکا دوور دا و بۆکێن ئارام دبینن، یێن کو ب ڕاستی هێزەکا نەخواستی دردکەون.",c:["#5a2f8f","#150a24"],q:"Sprite Fright Blender",pt:"mziZQzmf95pGMSqk7BPZvi"},
 {id:24,t:"شەحن",en:"Charge",y:2022,type:"فیلم",g:["کارتۆن","خەیالێ زانستی"],row:"",by:"بنیاتا Blender",d:"ل جیهانەکا کێمئاوایا وزێ، پیرەمێرەکێ هەژار دچیتە د کارگەها باتەریان دا و ب ڕۆبۆتەکێ پاراستنێ ڤە دکەڤیتە ڕووبەڕووبوونەکا مەترسیدار.",c:["#8f6a1f","#1d1405"],q:"Charge Blender",pt:"1AKMruUNPJQQQ4bvtHYVZQ"},
 {id:25,t:"فڕینا ب دەست",en:"Wing It!",y:2023,type:"فیلم",g:["کارتۆن","کۆمیدی","خەیالێ زانستی"],row:"",by:"بنیاتا Blender",d:"ئەندازیارەکێ ڕەق ژ سەردانا فڕۆکەڤانەکێ دلگەرم نەخۆشە، و هەردوو د شاتلێکا ژ کۆنترۆل دەرکەفتی دا بەرز دبن.",c:["#2f8f8a","#08201f"],q:"Wing It Blender",pt:"pkDDcE7HiLU3UTGmRV1nJG"},
-{id:26,t:"سینگۆلاریتی",en:"Singularity",y:2026,type:"فیلم",g:["کارتۆن","خەیالێ زانستی"],row:"",by:"بنیاتا Blender",d:"ڕوودانەکا ئاسمانی یا ترسناک مالا بەفرین یا گیانەوەرەکێ بچووک دقووت، و ئەو ل ناڤ بوونەوەرێن ڕووناک دا پەنا دبەت.",c:["#2f3f8f","#080b24"],q:"Singularity Blender",pt:"4pSeQCu9XXz9wWMh5gTNMf"}
+{id:26,t:"سینگۆلاریتی",en:"Singularity",y:2026,type:"فیلم",g:["کارتۆن","خەیالێ زانستی"],row:"",by:"بنیاتا Blender",d:"ڕوودانەکا ئاسمانی یا ترسناک مالا بەفرین یا گیانەوەرەکێ بچووک دقووت، و ئەو ل ناڤ بوونەوەرێن ڕووناک دا پەنا دبەت.",c:["#2f3f8f","#080b24"],q:"Singularity Blender",pt:"4pSeQCu9XXz9wWMh5gTNMf"},
+{id:27,t:"فانتۆمێ ئۆپێرایێ",en:"The Phantom of the Opera",y:1925,type:"فیلم",g:["ترسناک","دراما","کلاسیک"],row:"",by:"ڕووپێرت جولیان",d:"مرۆڤەکێ ڕووماڵکری ل ژێر ئۆپێرایا پاریسێ دژیت و عاشقی گۆرانیبێژەکا نوی دبیت، و دکەڤیتە دویڤ وێ.",c:["#5a1f2f","#12060a"],ia:"The Phantom of the Opera",w:"The Phantom of the Opera (1925 film)"},
+{id:28,t:"هەڵمەتا زێڕی",en:"The Gold Rush",y:1925,type:"فیلم",g:["کۆمیدی","کلاسیک"],row:"",by:"چارلی چاپلن",d:"گەڕۆکەکێ هەژار دچیتە ناڤچەیا زێڕی ل ئالاسکا و دکەڤیتە ئاستەنگ و ماجەرایێن پێکەنیناوی دا.",c:["#7a6a2f","#1c1807"],ia:"The Gold Rush",w:"The Gold Rush"},
+{id:29,t:"نانووک یێ باکوور",en:"Nanook of the North",y:1922,type:"فیلم",g:["دۆکیومێنتاری","کلاسیک"],row:"",by:"ڕۆبێرت فلاهێرتی",d:"دۆکیومێنتارییەکا بێدەنگ ل سەر ژیانا خێزانەکا ئینووتی ل ناڤچەیێن ساردێن ئارکتیکێ.",c:["#4f7a8f","#0b1a22"],ia:"Nanook of the North",w:"Nanook of the North"},
+{id:30,t:"شارێد",en:"Charade",y:1963,type:"فیلم",g:["دراما","کۆمیدی"],row:"",by:"ستانلی دۆنەن",d:"ژنەکا ل پاریسێ پشتی کوشتنا مێرێ خۆ دکەڤیتە د ئاستەنگەکا مەترسیدار دا، دەمێ چەند کەس دکەڤنە دویڤ پارەیەکێ ونکری.",c:["#2f4f8f","#0a1224"],ia:"Charade",w:"Charade (1963 film)"},
+{id:31,t:"کچا ڕۆژنامەگەریێ",en:"His Girl Friday",y:1940,type:"فیلم",g:["کۆمیدی"],row:"",by:"هاوارد هۆکس",d:"ڕۆژنامەنڤیسەکا ژن دخازیت شوو بکەت، بەلێ هەڤژینێ وێ یێ بەری هەمی هەولان ددەت دا ئەو بۆ ڕاپۆرتەکا دوماهیێ ڤەگەڕیت.",c:["#6b6b6b","#161616"],ia:"His Girl Friday",w:"His Girl Friday"},
+{id:32,t:"پلانا 9 ژ ئاسمانی",en:"Plan 9 from Outer Space",y:1959,type:"فیلم",g:["خەیالێ زانستی","ترسناک"],row:"",by:"ئێد وود",d:"بیانییان پلانەکا نوی بەرێ خۆ ددەتە زیندیکرنا مریان دا کو مرۆڤان ژ دروستکرنا چەکەکێ ترسناک بپارێزن.",c:["#3f6b3f","#0b1a0b"],ia:"Plan 9 from Outer Space",w:"Plan 9 from Outer Space"},
+{id:33,t:"کۆزمۆناۆت",en:"The Cosmonaut",y:2013,type:"فیلم",g:["خەیالێ زانستی","دراما"],row:"",by:"نیکۆلاس ئەلکالا",d:"فیلمەکێ دراما و خەیالێ زانستی یێ ئیسپانی، ب سەرچاوا ئازاد هاتیە چێکرن و ب مۆڵەتا Creative Commons هاتیە بەلافکرن.",c:["#6b3f8f","#140a24"],ia:"The Cosmonaut",w:"The Cosmonaut (film)"}
 ];
 var ART={
 1:'<circle cx="72" cy="34" r="18" fill="#e9e2c8" opacity=".9"/><path d="M0 150v-30l12-16 8 10 10-26 10 26 8-10 12 16v30z" fill="#0a0612"/><path d="M42 150l4-56-9-12 11 6 3-18 3 18 11-6-9 12 4 56z" fill="#05030a"/>',
@@ -139,7 +147,7 @@ var ART={
 16:'<circle cx="50" cy="76" r="16" fill="none" stroke="#9fe3ff" stroke-width="2"/><circle cx="50" cy="76" r="30" fill="none" stroke="#9fe3ff" stroke-width="2" opacity=".7"/><circle cx="50" cy="76" r="44" fill="none" stroke="#9fe3ff" stroke-width="2" opacity=".4"/><path d="M50 52l12 32H38z" fill="#d8e4ea"/><path d="M0 128q25-10 50 0t50-4v26H0z" fill="#0b1a22"/>'
 };
 function art(f,cls){var o=ART[f.id]?'<svg'+(cls?' class="'+cls+'"':'')+' viewBox="0 0 100 150" preserveAspectRatio="xMidYMid slice" aria-hidden="true">'+ART[f.id]+'</svg>':'';if(f.img&&!cls)o+='<img src="'+f.img+'" alt="" loading="lazy" onerror="this.remove()">';return o}
-var BASE="https://video.blender.org/object-storage/web_videos/",TH="https://video.blender.org/lazy-static/thumbnails/",NEW="ژ 2010 ڤە";
+var BASE="https://video.blender.org/object-storage/web_videos/",TH="https://video.blender.org/lazy-static/thumbnails/",NEW="ژ 2010 ڤە",LONG="فیلمێن درێژ";
 var MEDIA={
 11:["bf1f3fb5-b119-4f9f-9930-8e20e892b898",[[480,"bf1f3fb5-b119-4f9f-9930-8e20e892b898-480"],[720,"bf1f3fb5-b119-4f9f-9930-8e20e892b898-720"]]],
 12:["0eb052d0-fd51-43e6-aa33-ecdbf77a5d40",[[480,"0eb052d0-fd51-43e6-aa33-ecdbf77a5d40-480"],[720,"0eb052d0-fd51-43e6-aa33-ecdbf77a5d40-720"]]],
@@ -156,20 +164,53 @@ var MEDIA={
 25:["d817984e-6b27-46b9-9222-3952afd3e28c",[[480,"1be4c93c-1fd2-498d-adc7-50126823033e-480"],[1080,"9178581e-4d24-4a67-adf2-a30eadfaf32f-1080"]]],
 26:["54d3fc9c-96ba-4108-bb2f-ba27f5c71ae9",[[1080,"f91fd74e-a81f-48ec-b92b-c9504ac46e31-1080"]]]};
 var PT={11:"pAQiVCgv2CsLg79KKXUoMw",12:"2PcJe5aZqozRvH7MJ8BTmC",13:"hs1zJY8mdr3iH2JNmxpeGV",14:"rhMeBiBURa2KgsAfkC6kda"};
-F.forEach(function(f){var m=MEDIA[f.id];if(m){f.img=TH+m[0]+".jpg";f.srcs=m[1].map(function(x){return [x[0],BASE+x[1]+".mp4"]})}if(PT[f.id])f.pt=PT[f.id];if(f.srcs&&f.y>=2010&&f.type==="فیلم")f.row=NEW});
-var cats=["هەمی",NEW,"زنجیرە","کلاسیک","ترسناک","خەیالێ زانستی","کۆمیدی","کارتۆن"];
+var M={1:94,2:150,3:14,4:76,5:96,6:78,7:68,8:70,9:75,10:8,11:10,12:15,13:12,14:11,15:82,16:0,17:2,18:12,19:3,20:4,21:8,22:3,23:11,24:4,25:4,26:7,27:93,28:95,29:79,30:113,31:92,32:79,33:100};
+var IA={1:"Nosferatu",2:"Metropolis",3:"A Trip to the Moon",4:"The Cabinet of Dr. Caligari",5:"Night of the Living Dead",6:"The General",7:"The Kid",8:"Safety Last",9:"Battleship Potemkin",10:"Steamboat Willie",15:"Sita Sings the Blues",16:"Pioneer One"};
+var W={1:"Nosferatu",2:"Metropolis (1927 film)",3:"A Trip to the Moon",4:"The Cabinet of Dr. Caligari",5:"Night of the Living Dead",6:"The General (1926 film)",7:"The Kid (1921 film)",8:"Safety Last!",9:"Battleship Potemkin",10:"Steamboat Willie",11:"Big Buck Bunny",12:"Sintel",13:"Tears of Steel",14:"Elephants Dream",15:"Sita Sings the Blues",16:"Pioneer One",17:"Caminandes",18:"Cosmos Laundromat",21:"Spring (2019 film)",22:"Coffee Run",23:"Sprite Fright",24:"Charge (2022 film)",25:"Wing It!"};
+F.forEach(function(f){var m=MEDIA[f.id];if(m){f.img=TH+m[0]+".jpg";f.srcs=m[1].map(function(x){return [x[0]+"p",BASE+x[1]+".mp4"]})}if(PT[f.id])f.pt=PT[f.id];if(f.srcs&&f.y>=2010&&f.type==="فیلم")f.row=NEW;if(M[f.id]!=null)f.m=M[f.id];if(IA[f.id])f.ia=IA[f.id];if(W[f.id])f.w=W[f.id];if(f.m>=60&&f.type==="فیلم")f.row=LONG});
+var cats=["هەمی",LONG,NEW,"زنجیرە","کلاسیک","ترسناک","خەیالێ زانستی","کۆمیدی","کارتۆن"];
 var cur="هەمی",term="",cf=null,hls=null,subUrl=null,cs=null;
 var $=function(i){return document.getElementById(i)};
+function rt(f){return f.m?" – "+f.m+" خولەک":""}
+function iaPick(meta){var out=[];((meta&&meta.files)||[]).forEach(function(x){if(!/\.mp4$/i.test(x.name)||/thumb|sample|trailer/i.test(x.name))return;var sz=parseInt(x.size,10)||0;if(sz<5e6)return;out.push([(x.format||"MP4")+" – "+Math.round(sz/1048576)+"MB",sz,x.name])});out.sort(function(a,b){return a[1]-b[1]});return out}
+function resolveIA(f){
+  var q=f.ia;
+  function search(extra){return fetch("https://archive.org/advancedsearch.php?q="+encodeURIComponent('title:("'+q+'") AND mediatype:movies'+extra)+"&fl%5B%5D=identifier&sort%5B%5D=downloads+desc&rows=1&output=json").then(function(r){return r.json()}).then(function(d){return d.response&&d.response.docs[0]&&d.response.docs[0].identifier})}
+  return search(" AND year:"+f.y).then(function(id){return id||search("")}).then(function(id){
+    if(!id)return false;
+    return fetch("https://archive.org/metadata/"+id).then(function(r){return r.json()}).then(function(m){
+      var l=iaPick(m);if(!l.length)return false;
+      f.srcs=l.map(function(x){return [x[0],"https://archive.org/download/"+id+"/"+encodeURIComponent(x[2]).replace(/%2F/g,"/"),x[1]]});
+      $("arch").href="https://archive.org/details/"+id;return true});
+  }).catch(function(){return false});
+}
+var LANGS=[["ar","العربية"],["en","English"],["ku","Kurdî – بادینی"]];
+function addSubs(f){
+  var v=$("v");v.querySelectorAll("track").forEach(function(t){t.remove()});
+  var o='<option value="">بێ ژێرنڤیس</option>';LANGS.forEach(function(l){o+='<option value="'+l[0]+'" disabled>'+l[1]+' (نینە)</option>'});$("sl").innerHTML=o;
+  LANGS.forEach(function(l){var t=document.createElement("track");t.kind="subtitles";t.srclang=l[0];t.label=l[1];t.src="subs/"+f.id+"-"+l[0]+".vtt";
+    t.addEventListener("load",function(){var op=$("sl").querySelector('option[value="'+l[0]+'"]');if(op){op.disabled=false;op.textContent=l[1]}});
+    v.appendChild(t);try{t.track.mode="hidden"}catch(e){}});
+}
+function loadPosters(){
+  var T=F.filter(function(f){return f.w}).map(function(f){return f.w});
+  fetch("https://en.wikipedia.org/w/api.php?action=query&format=json&origin=*&redirects=1&prop=pageimages&piprop=thumbnail&pithumbsize=400&titles="+encodeURIComponent(T.join("|"))).then(function(r){return r.json()}).then(function(d){
+    var q=d.query||{},map={},src={};
+    (q.normalized||[]).forEach(function(x){map[x.from]=x.to});(q.redirects||[]).forEach(function(x){map[x.from]=x.to});
+    Object.keys(q.pages||{}).forEach(function(k){var p=q.pages[k];if(p.thumbnail)src[p.title]=p.thumbnail.source});
+    F.forEach(function(f){if(!f.w)return;var t=map[f.w]||f.w;t=map[t]||t;if(src[t])f.img=src[t]});render()
+  }).catch(function(){});
+}
 function link(f){return f.pt?"https://video.blender.org/w/"+f.pt:"https://archive.org/search?query="+encodeURIComponent(f.q)}
-function card(f){return '<button class="card" data-id="'+f.id+'"><div class="poster" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f)+'<span class="tx">'+f.t+'<small>'+f.en+'</small></span></div><div class="t">'+f.t+'</div><div class="y">'+f.y+' – '+f.type+'</div></button>'}
-function hero(){var f=F[1];$("hero").innerHTML='<div class="hero" data-en="'+f.en+'" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f,"hart")+'<div class="meta">'+f.y+' – '+f.g.join("، ")+'</div><h1>'+f.t+'</h1><p>'+f.d+'</p><div><button class="btn" data-play="'+f.id+'">تەماشە بکە</button><button class="btn ghost" data-id="'+f.id+'">وردەکاری</button></div></div>'}
+function card(f){return '<button class="card" data-id="'+f.id+'"><div class="poster" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f)+'<span class="tx">'+f.t+'<small>'+f.en+'</small></span></div><div class="t">'+f.t+'</div><div class="y">'+f.y+' – '+f.type+rt(f)+'</div></button>'}
+function hero(){var f=F[1];$("hero").innerHTML='<div class="hero" data-en="'+f.en+'" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f,"hart")+'<div class="meta">'+f.y+' – '+f.g.join("، ")+rt(f)+'</div><h1>'+f.t+'</h1><p>'+f.d+'</p><div><button class="btn" data-play="'+f.id+'">تەماشە بکە</button><button class="btn ghost" data-id="'+f.id+'">وردەکاری</button></div></div>'}
 function chips(){$("chips").innerHTML=cats.map(function(c){return '<button class="chip" aria-pressed="'+(c===cur)+'" data-c="'+c+'">'+c+'</button>'}).join("")}
 function render(){
-  var list=F.filter(function(f){return (cur==="هەمی"||f.g.indexOf(cur)>-1||(cur===NEW&&f.y>=2010))&&(!term||(f.t+f.en).toLowerCase().indexOf(term)>-1)});
+  var list=F.filter(function(f){return (cur==="هەمی"||f.g.indexOf(cur)>-1||(cur===NEW&&f.y>=2010)||(cur===LONG&&f.m>=60))&&(!term||(f.t+f.en).toLowerCase().indexOf(term)>-1)});
   var h="";
   if(cur==="هەمی"&&!term){
     var rows=[];F.forEach(function(f){if(rows.indexOf(f.row)<0)rows.push(f.row)});
-    rows.sort(function(a,b){return (a===NEW?0:1)-(b===NEW?0:1)});rows.forEach(function(r){h+='<section><h2>'+r+'</h2><div class="row">'+F.filter(function(f){return f.row===r}).map(card).join("")+'</div></section>'});
+    var rk=function(x){return x===LONG?0:x===NEW?1:2};rows.sort(function(a,b){return rk(a)-rk(b)});rows.forEach(function(r){h+='<section><h2>'+r+'</h2><div class="row">'+F.filter(function(f){return f.row===r}).map(card).join("")+'</div></section>'});
   }else{
     h='<section><h2>ئەنجام ('+list.length+')</h2>'+(list.length?'<div class="grid">'+list.map(card).join("")+'</div>':'<div class="empty">چ فیلم نەهاتنە دیتن. ناڤەکێ دی تاقی بکە یان «هەمی» هلبژێرە.</div>')+'</section>';
   }
@@ -178,7 +219,7 @@ function render(){
 function find(id){return F.filter(function(x){return x.id==id})[0]}
 function details(id){
   var f=find(id);if(!f)return;
-  $("dlg").innerHTML='<div class="poster" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f)+'<span class="tx">'+f.t+'<small>'+f.en+'</small></span></div><div class="body"><h3>'+f.t+'</h3><div style="color:var(--muted)">'+f.y+' – دەرهێنەر: '+f.by+'</div><div class="tags">'+f.g.map(function(g){return '<span>'+g+'</span>'}).join("")+'</div><p>'+f.d+'</p><button class="btn" data-play="'+f.id+'">تەماشە بکە</button> <button class="btn alt" data-close="modal">دابخە</button></div>';
+  $("dlg").innerHTML='<div class="poster" style="--h1:'+f.c[0]+';--h2:'+f.c[1]+'">'+art(f)+'<span class="tx">'+f.t+'<small>'+f.en+'</small></span></div><div class="body"><h3>'+f.t+'</h3><div style="color:var(--muted)">'+f.y+rt(f)+' – دەرهێنەر: '+f.by+'</div><div class="tags">'+f.g.map(function(g){return '<span>'+g+'</span>'}).join("")+'</div><p>'+f.d+'</p><button class="btn" data-play="'+f.id+'">تەماشە بکە</button> <button class="btn alt" data-close="modal">دابخە</button></div>';
   $("modal").classList.add("open");
 }
 function stop(){var v=$("v");if(hls){hls.destroy();hls=null}v.pause();v.removeAttribute("src");v.querySelectorAll("track").forEach(function(t){t.remove()});v.load();$("ql").innerHTML='<option value="-1">خۆکار</option>'}
@@ -191,15 +232,28 @@ function load(src){
   }else{v.src=src}
   v.play().catch(function(){});
 }
+function startSrc(f){
+  cs=f.srcs;var d=cs.filter(function(x){return x[0]==="720p"})[0];
+  if(!d){var ok=cs.filter(function(x){return x[2]&&x[2]<=7e8});d=ok.length?ok[ok.length-1]:cs[0]}
+  $("url").value=d[1];load(d[1]);addSubs(f);
+  $("ql").innerHTML=cs.map(function(x,i){return '<option value="'+i+'"'+(x===d?" selected":"")+">"+x[0]+"</option>"}).join("");
+}
 function play(id){
-  var f=find(id);if(!f)return;cf=f;
+  var f=find(id);if(!f)return;cf=f;cs=null;
   $("modal").classList.remove("open");
-  $("ptitle").textContent=f.t+" ("+f.y+")";
-  $("arch").href=link(f);$("arch").style.display=f.srcs?"none":"";$("url").value="";cs=f.srcs||null;
-  stop();
-  $("msg").textContent=f.srcs?"ڤیدیۆ ژ پەیجا فەرمی یا Blender دهێتە بارکرن. © Blender Foundation – مۆڵەتا Creative Commons (ناڤێ چێکەری بنڤیسە ئەگەر بەلاڤ بکەی).":"ڤیدیۆیەکا یاسایی دانە: لینکەکێ MP4 یان HLS بنڤێسە، یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە. دشێی ژی ل Internet Archive بگەڕی.";
+  $("ptitle").textContent=f.t+" ("+f.y+")"+(f.m?" – "+f.m+" خولەک":"");
+  $("arch").href=link(f);$("arch").style.display="none";$("url").value="";
+  stop();addSubs(f);
+  $("sh").textContent="subs/"+f.id+"-ar.vtt  subs/"+f.id+"-en.vtt  subs/"+f.id+"-ku.vtt";
   $("pm").classList.add("open");
-  if(cs){var d=cs.filter(function(x){return x[0]===720})[0]||cs[0];$("url").value=d[1];load(d[1]);$("ql").innerHTML=cs.map(function(x,i){return '<option value="'+i+'"'+(x===d?" selected":"")+">"+x[0]+"p</option>"}).join("")}
+  if(f.srcs){startSrc(f);$("msg").textContent=f.pt?"© Blender Foundation – مۆڵەتا Creative Commons (ناڤێ چێکەری بنڤیسە ئەگەر بەلاڤ بکەی).":"ڤیدیۆ ژ Internet Archive دهێتە بارکرن.";return}
+  if(f.ia){
+    $("msg").textContent="دگەڕین ل Internet Archive بۆ فیلمی…";
+    resolveIA(f).then(function(ok){if(cf!==f)return;
+      if(ok){startSrc(f);$("msg").textContent="ڤیدیۆ ژ Internet Archive دهێتە بارکرن (موڵکێ گشتی یان ئازاد). فیلمێن درێژ دشێن چەند چرکەیان بخوازن هەتا دەست پێ بکەن."}
+      else{$("arch").style.display="";$("msg").textContent="ئەڤ فیلمە ب خۆکار نەهاتە دیتن. لینکەکێ خۆ دانە، یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە، یان ژ لاپەڕا سەرچاوێ ببینە."}});
+    return}
+  $("msg").textContent="ڤیدیۆیەکا یاسایی دانە: لینکەکێ MP4 یان HLS بنڤێسە، یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە."
 }
 function closeP(){stop();$("pm").classList.remove("open")}
 function toVtt(t){return /^WEBVTT/.test(t)?t:"WEBVTT\n\n"+t.replace(/\r/g,"").replace(/(\d\d:\d\d:\d\d),(\d{3})/g,"$1.$2")}
@@ -221,18 +275,20 @@ $("ql").addEventListener("change",function(e){
   load(cs[i][1]);e.target.innerHTML=o;e.target.selectedIndex=i;
   v.addEventListener("loadedmetadata",function(){v.currentTime=t},{once:true});
 });
+$("sl").addEventListener("change",function(e){var v=$("v");for(var i=0;i<v.textTracks.length;i++){var t=v.textTracks[i];t.mode=(t.language===e.target.value)?"showing":"hidden"}});
 $("sf").addEventListener("change",function(e){
   var f=e.target.files[0];if(!f)return;
   f.text().then(function(t){
-    var v=$("v");v.querySelectorAll("track").forEach(function(x){x.remove()});
+    var v=$("v");v.querySelectorAll("track[data-custom]").forEach(function(x){x.remove()});
     if(subUrl)URL.revokeObjectURL(subUrl);
     subUrl=URL.createObjectURL(new Blob([toVtt(t)],{type:"text/vtt"}));
-    var tr=document.createElement("track");tr.kind="subtitles";tr.label="ژێرنڤیس";tr.src=subUrl;tr.default=true;v.appendChild(tr);
-    if(v.textTracks[0])v.textTracks[0].mode="showing";
+    for(var i=0;i<v.textTracks.length;i++)v.textTracks[i].mode="hidden";
+    var tr=document.createElement("track");tr.kind="subtitles";tr.label="ژێرنڤیس";tr.srclang="xx";tr.setAttribute("data-custom","1");tr.src=subUrl;v.appendChild(tr);
+    tr.track.mode="showing";$("sl").value="";
   });
 });
 $("v").addEventListener("error",function(){if($("v").getAttribute("src"))$("msg").textContent="ڤیدیۆ نەهاتە بارکرن. لینکی پشتراست بکە یان فایلەکێ ژ ئامیرێ خۆ هلبژێرە."});
-hero();chips();render();
+hero();chips();render();loadPosters();
 </script>
 </body>
 </html>
